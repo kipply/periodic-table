@@ -114,8 +114,8 @@ class PeriodicTable(activity.Activity):
         self.set_screen(Screen.INFO)
 
     def _searched_element_cb(self, toolbar, found_elements):
-        if not found_elements:
-            self.table.enable_hover()
+        # if not found_elements:
+        #     self.table.enable_hover()
         self.table.disable_hover()
         for item in self.table.items:
             if item.element["number"] not in found_elements:
