@@ -97,7 +97,7 @@ class PeriodicTableToolbarBox(ToolbarBox):
         pattern = search_entry.get_text()
         if self._autosearch_timer:
             GObject.source_remove(self._autosearch_timer)
-
+            self._autosearch_timer = None
             found_elements = []
             for key, element in ELEMENTS_DATA.iteritems():
                 if match(pattern, element):
