@@ -115,9 +115,9 @@ class PeriodicTableToolbarBox(ToolbarBox):
                                                      self._autosearch_timer_cb)
 
     def _autosearch_timer_cb(self):
-        logging.error('timer up')
-        self._autosearch_timer = None
         self.search_entry.activate()
+
+        self._autosearch_timer = None
         return False
 
     def _add_widget(self, widget, expand=False):
