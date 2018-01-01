@@ -103,11 +103,6 @@ class PeriodicTableToolbarBox(ToolbarBox):
 
             self.emit("searched-element", found_elements)
 
-
-    def _search_entry_activated_cb(self, search_entry):
-        if self._autosearch_timer:
-            GObject.source_remove(self._autosearch_timer)
-
     def _search_entry_changed_cb(self, search_entry):
         if not search_entry.props.text:
             search_entry.activate()
