@@ -100,7 +100,7 @@ class PeriodicTableToolbarBox(ToolbarBox):
             for key, element in ELEMENTS_DATA.iteritems():
                 if match(pattern, element):
                     found_elements.append(element["number"])
-
+            GObject.source_remove(self._autosearch_timer)
             self.emit("searched-element", found_elements)
 
     def _search_entry_changed_cb(self, search_entry):
@@ -108,8 +108,9 @@ class PeriodicTableToolbarBox(ToolbarBox):
             search_entry.activate()
             return
 
-        if not self._autosearch_timer:
-            self._autosearch_timer = GObject.timeout_add(1000,
+        if self._autosearch_timer:
+            GObject.source_remove(self._autosearch_timer)
+        self._autosearch_timer = GObject.timeout_add(1000,
                                                      self._autosearch_timer_cb)
 
     def _autosearch_timer_cb(self):
