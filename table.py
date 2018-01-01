@@ -221,7 +221,7 @@ class TableItem(Gtk.EventBox):
         self.show_all()
 
     def __enter_cb(self, widget, event):
-        if self._current_color == self.color:
+        if self._current_color == self.color and self.color != Color.GRAYED:
             self.modify_bg(Gtk.StateType.NORMAL, Color.SELECTED)
             self.emit("mouse-enter")
 
