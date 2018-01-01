@@ -106,7 +106,7 @@ class PeriodicTableToolbarBox(ToolbarBox):
 
     def _search_entry_changed_cb(self, search_entry):
         if not search_entry.props.text:
-            search_entry.activate()
+            search_entry.emit("activate")
             return
 
         if self._autosearch_timer:
@@ -115,9 +115,8 @@ class PeriodicTableToolbarBox(ToolbarBox):
                                                      self._autosearch_timer_cb)
 
     def _autosearch_timer_cb(self):
-        self.search_entry.activate()
-
         self._autosearch_timer = None
+        self.search_entry.emit("activate")
         return False
 
     def _add_widget(self, widget, expand=False):
