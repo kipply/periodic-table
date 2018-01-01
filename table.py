@@ -428,7 +428,7 @@ class Table(Gtk.ScrolledWindow):
             item.set_temperature(temp)
 
     def enable_hover(self):
-        self.hover_effect.unblock()
+        self.unblock(hover_effect)
 
-    def disable_hover(self):
-        self.hover_effect.block()
+    def disable_hover():
+        self.block(hover_effect)
