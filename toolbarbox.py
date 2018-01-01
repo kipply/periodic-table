@@ -27,6 +27,8 @@ from gi.repository import Gtk, GObject
 from sugar3.graphics.toolbarbox import ToolbarBox
 from sugar3.graphics import iconentry
 
+import logging
+
 
 def match(pattern, element):
     # Keep it non case-sensitive
@@ -108,10 +110,12 @@ class PeriodicTableToolbarBox(ToolbarBox):
 
         if self._autosearch_timer:
             GObject.source_remove(self._autosearch_timer)
+
         self._autosearch_timer = GObject.timeout_add(1000,
                                                      self._autosearch_timer_cb)
 
     def _autosearch_timer_cb(self):
+        logging.error("noehueontuhte")
         self._autosearch_timer = None
         self.search_entry.activate()
         return False
