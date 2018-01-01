@@ -255,12 +255,6 @@ class TableItem(Gtk.EventBox):
         for label in self.labels:
             label.modify_fg(Gtk.StateType.NORMAL, label_color)
 
-    def enable_hover(self):
-        self.hover_effect.unblock()
-
-    def disable_hover(self):
-        self.hover_effect.block()
-
 
 class DetailedTableItem(Gtk.EventBox):
 
@@ -432,3 +426,9 @@ class Table(Gtk.ScrolledWindow):
     def update_temperature(self, temp):
         for item in self.items:
             item.set_temperature(temp)
+
+    def enable_hover(self):
+        self.hover_effect.unblock()
+
+    def disable_hover(self):
+        self.hover_effect.block()
