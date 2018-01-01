@@ -47,10 +47,8 @@ class PeriodicTable(activity.Activity):
         self.set_canvas(self.box)
 
         self.make_toolbars()
-        toolbarBox = self.get_toolbar_box()
-        toolbarBox._add_widget(toolbarBox.search_entry, expand=True)
-        toolbarBox.connect("searched-element",
-                           self._searched_element_cb)
+        self.get_toolbar_box().connect("searched-element",
+                                       self._searched_element_cb)
 
         self.table = Table()
         self.table.connect("element-selected", self._element_selected_cb)
@@ -77,6 +75,8 @@ class PeriodicTable(activity.Activity):
         self.forward_button.set_sensitive(False)
         self.forward_button.connect("clicked", self._go_forward)
         toolbar.insert(self.forward_button, -1)
+
+        toolbar._add_widget(self.search_entry, expand=True)
 
         toolbar.insert(make_separator(True), -1)
         toolbar.insert(StopButton(self), -1)
