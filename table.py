@@ -191,6 +191,7 @@ class TableItem(Gtk.EventBox):
         self.color = get_color_by_type(element["category"])
         self.labels = []
         self._current_color = self.color
+        self.active = True
 
         self.set_size_request(ITEM_SIZE, ITEM_SIZE)
         self.modify_bg(Gtk.StateType.NORMAL, self.color)
@@ -222,18 +223,12 @@ class TableItem(Gtk.EventBox):
         self.show_all()
 
     def __enter_cb(self, widget, event):
-        bg = self.get_style_context().get_property("background-color", Gtk.StateFlags.NORMAL)
-        logging.error(bg)
-        logging.error(Color.GRAYED)
-        if self._current_color == self.color and bg != Color.GRAYED:
+        if self._current_color == self.color and self.active:
             self.modify_bg(Gtk.StateType.NORMAL, Color.SELECTED)
             self.emit("mouse-enter")
 
     def __leave_cb(self, widget, event):
-        bg = self.get_style_context().get_property("background-color", Gtk.StateFlags.NORMAL)
-        logging.error(bg)
-        logging.error(Color.GRAYED)
-        if self._current_color == self.color and bg != Color.GRAYED:
+        if self._current_color == self.color and self.active:
             self.modify_bg(Gtk.StateType.NORMAL, self.color)
             self.emit("mouse-leave")
 
