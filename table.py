@@ -226,7 +226,7 @@ class TableItem(Gtk.EventBox):
             self.emit("mouse-enter")
 
     def __leave_cb(self, widget, event):
-        if self._current_color == self.color:
+        if self._current_color == self.color and self.color != Color.GRAYED:
             self.modify_bg(Gtk.StateType.NORMAL, self.color)
             self.emit("mouse-leave")
 
@@ -426,9 +426,3 @@ class Table(Gtk.ScrolledWindow):
     def update_temperature(self, temp):
         for item in self.items:
             item.set_temperature(temp)
-
-    def enable_hover(self):
-        self.handler_unblock(self.hover_effect)
-
-    def disable_hover(self):
-        self.handler_block(self.hover_effect)
