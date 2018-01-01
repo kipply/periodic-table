@@ -430,5 +430,5 @@ class Table(Gtk.ScrolledWindow):
     def enable_hover(self):
         self.unblock(hover_effect)
 
-    def disable_hover():
+    def disable_hover(self):
         self.block(hover_effect)
