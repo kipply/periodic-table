@@ -96,11 +96,12 @@ class PeriodicTableToolbarBox(ToolbarBox):
     def _search_entry_activated_cb(self, search_entry):
         pattern = search_entry.get_text()
         if self._autosearch_timer:
+            GObject.source_remove(self._autosearch_timer)
+
             found_elements = []
             for key, element in ELEMENTS_DATA.iteritems():
                 if match(pattern, element):
                     found_elements.append(element["number"])
-            GObject.source_remove(self._autosearch_timer)
             self.emit("searched-element", found_elements)
 
     def _search_entry_changed_cb(self, search_entry):
