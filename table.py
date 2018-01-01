@@ -255,10 +255,10 @@ class TableItem(Gtk.EventBox):
         for label in self.labels:
             label.modify_fg(Gtk.StateType.NORMAL, label_color)
 
-    def enable_hover():
+    def enable_hover(self):
         self.hover_effect.unblock()
 
-    def disable_hover():
+    def disable_hover(self):
         self.hover_effect.block()
 
 
