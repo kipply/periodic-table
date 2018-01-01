@@ -117,8 +117,10 @@ class PeriodicTable(activity.Activity):
         for item in self.table.items:
             if item.element["number"] not in found_elements:
                 item.modify_bg(Gtk.StateType.NORMAL, Color.SELECTED)
+                item.disable_hover()
             else:
                 item.modify_bg(Gtk.StateType.NORMAL, item.color)
+                item.enable_hover()
 
     def _go_back(self, button):
         self.set_screen(Screen.TABLE)

@@ -369,7 +369,8 @@ class Table(Gtk.ScrolledWindow):
 
             item = TableItem(data)
             item.connect("selected", self.__item_selected_cb)
-            item.connect("mouse-enter", self.__item_enter_cb)
+            self.hover_effect = item.connect("mouse-enter",
+                                             self.__item_enter_cb)
             item.connect("mouse-leave", self.__item_leave_cb)
 
             if (data["category"] == Category.ACTINIDE or
@@ -425,3 +426,9 @@ class Table(Gtk.ScrolledWindow):
     def update_temperature(self, temp):
         for item in self.items:
             item.set_temperature(temp)
+
+    def enable_hover():
+        self.hover_effect.unblock()
+
+    def disable_hover():
+        self.hover_effect.block()
