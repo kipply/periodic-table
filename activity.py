@@ -76,7 +76,7 @@ class PeriodicTable(activity.Activity):
         self.forward_button.connect("clicked", self._go_forward)
         toolbar.insert(self.forward_button, -1)
 
-        toolbar._add_widget(self.search_entry, expand=True)
+        toolbarbox._add_widget(self.search_entry, expand=True)
 
         toolbar.insert(make_separator(True), -1)
         toolbar.insert(StopButton(self), -1)
