@@ -37,6 +37,7 @@ from gi.repository import Gdk
 from gi.repository import Pango
 from gi.repository import GObject
 
+import  logging
 ITEM_SIZE = min(Gdk.Screen.width() / 21, Gdk.Screen.height() / 13)
 
 
