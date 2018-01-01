@@ -115,11 +115,12 @@ class PeriodicTableToolbarBox(ToolbarBox):
 
         if self._autosearch_timer:
             GObject.source_remove(self._autosearch_timer)
+        logging.error('timer start')
         self._autosearch_timer = GObject.timeout_add(1000,
                                                      self._autosearch_timer_cb)
 
     def _autosearch_timer_cb(self):
-        logging.debug('_autosearch_timer_cb')
+        logging.error('timer up')
         self._autosearch_timer = None
         self.search_entry.activate()
         return False
