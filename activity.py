@@ -49,6 +49,7 @@ class PeriodicTable(activity.Activity):
         self.make_toolbars()
         self.get_toolbar_box().connect("searched-element",
                                        self._searched_element_cb)
+        self.get_toolbar_box()._add_widget(self.search_entry, expand=True)
 
         self.table = Table()
         self.table.connect("element-selected", self._element_selected_cb)

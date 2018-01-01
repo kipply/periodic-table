@@ -90,7 +90,6 @@ class PeriodicTableToolbarBox(ToolbarBox):
         self.search_entry.connect('changed', self._search_entry_changed_cb)
         self.search_entry.add_clear_button()
         self._autosearch_timer = None
-        self._add_widget(self.search_entry, expand=True)
 
     def _search_entry_activated_cb(self, search_entry):
         pattern = search_entry.get_text()
