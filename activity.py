@@ -114,7 +114,6 @@ class PeriodicTable(activity.Activity):
         self.set_screen(Screen.INFO)
 
     def _searched_element_cb(self, toolbar, found_elements):
-        self.table.disable_hover()
         for item in self.table.items:
             if item.element["number"] not in found_elements:
                 item.modify_bg(Gtk.StateType.NORMAL, Color.GRAYED)
