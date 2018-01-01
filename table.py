@@ -221,12 +221,14 @@ class TableItem(Gtk.EventBox):
         self.show_all()
 
     def __enter_cb(self, widget, event):
-        if self._current_color == self.color and self.color != Color.GRAYED:
+        bg = self.get_property("background-color", Gtk.StateFlags.NORMAL)
+        if self._current_color == self.color and bg != Color.GRAYED:
             self.modify_bg(Gtk.StateType.NORMAL, Color.SELECTED)
             self.emit("mouse-enter")
 
     def __leave_cb(self, widget, event):
-        if self._current_color == self.color and self.color != Color.GRAYED:
+        bg = self.get_property("background-color", Gtk.StateFlags.NORMAL)
+        if self._current_color == self.color and bg != Color.GRAYED:
             self.modify_bg(Gtk.StateType.NORMAL, self.color)
             self.emit("mouse-leave")
 
